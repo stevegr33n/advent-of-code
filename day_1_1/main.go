@@ -27,32 +27,32 @@ func main() {
 }
 
 func calibrationValues(line string) int {
-	var letter string
-	var combinedNumber string
 	var j int
+	var result string
+	var char string
 
 	for j = 0; j < len(line); j++ {
-		letter = string(line[j])
-		if _, err := strconv.Atoi(letter); err == nil {
-			combinedNumber += letter
+		char = string(line[j])
+		if _, err := strconv.Atoi(char); err == nil {
+			result += char
 			break
 		}
 	}
 	for k := len(line) - 1; k > j; k-- {
-		letter = string(line[k])
-		if _, err := strconv.Atoi(letter); err == nil {
-			combinedNumber += letter
+		char = string(line[k])
+		if _, err := strconv.Atoi(char); err == nil {
+			result += char
 			break
 		}
 	}
 
-	if len(combinedNumber) == 1 {
-		combinedNumber += combinedNumber
+	if len(result) == 1 {
+		result += result
 	}
 
-	val, err := strconv.Atoi(combinedNumber)
+	integerResult, err := strconv.Atoi(result)
 	if err != nil {
 		os.Exit(1)
 	}
-	return val
+	return integerResult
 }
